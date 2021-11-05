@@ -1,26 +1,30 @@
+/**
+ * @Editor：WYDX
+ * @CreateTime: 2021-11-05 14:56:25
+ * @LastEditor: WYDX
+ * @LastEditTime: 2021-11-05 14:56:25
+ * @Description: 主入口
+ */
 <template>
-  <img alt="Vue logo" src="./assets/logo.png">
-  <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <div id="game-box"></div>
 </template>
 
-<script>
-import HelloWorld from './components/HelloWorld.vue'
+<script setup>
+import { onMounted } from "vue"
+import { useInit } from "./init/useInit";
 
-export default {
-  name: 'App',
-  components: {
-    HelloWorld
-  }
-}
+onMounted(() => {
+  const GAME_BOX = document.getElementById("game-box")
+
+  // 初始化场景
+  useInit(GAME_BOX)
+})
 </script>
 
 <style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
+#game-box {
+  position: absolute;
+  width: 100vw;
+  height: 100vh;
 }
 </style>
