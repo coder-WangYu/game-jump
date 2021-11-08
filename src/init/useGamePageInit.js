@@ -47,6 +47,7 @@ export const useGamePageInit = function (scene, GAME_BOX) {
     
     // 瓶子从视口顶部下落
     
+    
     // 开启游戏事件监听
     useEvents(scene, start_btn, GAME_BOX, GAME_PAGE)
   }
