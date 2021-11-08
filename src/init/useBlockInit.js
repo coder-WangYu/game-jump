@@ -7,14 +7,14 @@
  */
 import {
   Mesh,
-  MeshBasicMaterial,
+  MeshPhongMaterial,
   BoxGeometry
 } from "three";
 
 export const useBlockInit = function (scene) {
   const block = new Mesh(
     new BoxGeometry(.4 ,.2 ,.4),
-    new MeshBasicMaterial({
+    new MeshPhongMaterial({
       color: 0xffffff
     })
   )
@@ -22,6 +22,7 @@ export const useBlockInit = function (scene) {
   block.position.y = 0
   block.position.z = 0
   block.castShadow = true
+  block.receiveShadow = true
   
   scene.add(block)
 }

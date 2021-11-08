@@ -10,24 +10,19 @@ import {
   PerspectiveCamera,
   WebGLRenderer,
   AxesHelper,
-  PointLight,
   PCFSoftShadowMap,
+  DirectionalLight,
 } from "three";
 import { useBlockInit } from "./useBlockInit";
 import { useBottleInit } from "./useBottleInit";
 import { useCylinderInit } from "./useCylinderInit";
+import {useGroundInit} from "./useGroundInit";
 
 export const useInit = function (GAME_BOX) {
   // 设置环境
   const scene = new Scene()
   const xyz_helper = new AxesHelper(1)
   scene.add(xyz_helper)
-  
-  // 设置点光源
-  const light = new PointLight(0xff0000, 1, 100)
-  light.position.set(1, 1, 0)
-  light.castShadow = true
-  scene.add(light)
   
   // 设置相机
   const camera = new PerspectiveCamera(
@@ -36,6 +31,9 @@ export const useInit = function (GAME_BOX) {
     .1,
     1000
   )
+  // camera.position.x = 0
+  // camera.position.y = 0
+  // camera.position.z = 2
   camera.position.x = -2
   camera.position.y = 2
   camera.position.z = 2
@@ -45,11 +43,20 @@ export const useInit = function (GAME_BOX) {
   const renderer = new WebGLRenderer({
     antialias: true
   })
+  renderer.setClearColor(0xffffff, 1)
+  renderer.setSize(GAME_BOX.clientWidth, GAME_BOX.clientHeight)
   renderer.shadowMap.enabled = true
   renderer.shadowMap.type = PCFSoftShadowMap
-  renderer.setClearColor(0xA9CDDC, 1)
-  renderer.setSize(GAME_BOX.clientWidth, GAME_BOX.clientHeight)
   GAME_BOX.appendChild(renderer.domElement)
+  
+  // 设置平行光
+  const directionalLight = new DirectionalLight( 0xffffff, 1)
+  directionalLight.position.x = 40
+  directionalLight.position.y = 110
+  directionalLight.position.z = 70
+  directionalLight.position.normalize()
+  directionalLight.castShadow = true
+  scene.add(directionalLight)
   
   // 渲染
   function animate () {
@@ -58,7 +65,9 @@ export const useInit = function (GAME_BOX) {
   }
   animate()
   
+  // 初始化瓶子、砖块、圆柱、地面
   useBlockInit(scene)
   useCylinderInit(scene)
   useBottleInit(scene)
+  useGroundInit(scene, GAME_BOX)
 }

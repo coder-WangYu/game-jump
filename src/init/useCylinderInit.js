@@ -7,14 +7,14 @@
  */
 import {
   Mesh,
-  MeshBasicMaterial,
+  MeshLambertMaterial,
   CylinderGeometry
 } from "three";
 
 export const useCylinderInit = function (scene) {
   const cylinder = new Mesh(
     new CylinderGeometry(.3, .3, .2, 30),
-    new MeshBasicMaterial({
+    new MeshLambertMaterial({
       color: 0xffffff
     })
   )
