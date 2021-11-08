@@ -17,6 +17,7 @@ import { useBlockInit } from "./useBlockInit";
 import { useBottleInit } from "./useBottleInit";
 import { useCylinderInit } from "./useCylinderInit";
 import {useGroundInit} from "./useGroundInit";
+import {useGamePageInit} from "./useGamePageInit";
 
 export const useInit = function (GAME_BOX) {
   // 设置环境
@@ -70,4 +71,5 @@ export const useInit = function (GAME_BOX) {
   useCylinderInit(scene)
   useBottleInit(scene)
   useGroundInit(scene, GAME_BOX)
+  useGamePageInit(scene, GAME_BOX)
 }
