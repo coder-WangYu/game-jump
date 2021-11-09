@@ -9,8 +9,9 @@ import {useElasticAnimate} from "../animate/useElasticAnimate";
 
 export const useStartEvent = function (status) {
   // 瓶子从视口顶部下落
-  status.bottle.position.y = 1.5
-  useElasticAnimate(status.bottle)
+  if (status.start_btn.innerHTML !== "继 续 游 戏") {
+    useElasticAnimate(2, status.bottle)
+  }
   
   // 创建积分信息
   const score_info = document.createElement("div")

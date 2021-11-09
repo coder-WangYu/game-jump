@@ -42,6 +42,7 @@ export const useGamePageInit = function (state) {
   state.GAME_BOX.appendChild(start_btn)
   
   start_btn.onclick = function () {
+    state.bottle.position.y = 0
     state.scene.remove(GAME_PAGE)
     start_btn.style.display = "none"
     
