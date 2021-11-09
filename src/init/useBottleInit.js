@@ -22,7 +22,7 @@ export const useBottleInit = function (state) {
     })
   )
   head.position.x = -1
-  head.position.y = .405
+  head.position.y = .42
   head.position.z = 0
   head.castShadow = true
   
