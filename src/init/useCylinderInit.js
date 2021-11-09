@@ -11,7 +11,7 @@ import {
   CylinderGeometry
 } from "three";
 
-export const useCylinderInit = function (scene) {
+export const useCylinderInit = function (state) {
   const cylinder = new Mesh(
     new CylinderGeometry(.3, .3, .2, 30),
     new MeshLambertMaterial({
@@ -22,6 +22,7 @@ export const useCylinderInit = function (scene) {
   cylinder.position.y = 0
   cylinder.position.z = 0
   cylinder.castShadow = true
+  cylinder.receiveShadow = true
   
-  scene.add(cylinder)
+  state.scene.add(cylinder)
 }

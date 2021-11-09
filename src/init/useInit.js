@@ -18,10 +18,18 @@ import { useBottleInit } from "./useBottleInit";
 import { useCylinderInit } from "./useCylinderInit";
 import {useGroundInit} from "./useGroundInit";
 import {useGamePageInit} from "./useGamePageInit";
+import {reactive} from "vue";
 
 export const useInit = function (GAME_BOX) {
+  const state = reactive({
+    GAME_BOX: GAME_BOX,
+    scene: null,
+    bottle: null
+  })
+  
   // 设置环境
   const scene = new Scene()
+  state.scene = scene
   const xyz_helper = new AxesHelper(1)
   scene.add(xyz_helper)
   
@@ -61,15 +69,15 @@ export const useInit = function (GAME_BOX) {
   
   // 渲染
   function animate () {
-    requestAnimationFrame(animate)
     renderer.render(scene, camera)
+    requestAnimationFrame(animate)
   }
   animate()
   
   // 初始化瓶子、砖块、圆柱、地面
-  useBlockInit(scene)
-  useCylinderInit(scene)
-  useBottleInit(scene)
-  useGroundInit(scene, GAME_BOX)
-  useGamePageInit(scene, GAME_BOX)
+  useBlockInit(state)
+  useCylinderInit(state)
+  useBottleInit(state)
+  useGroundInit(state)
+  useGamePageInit(state)
 }

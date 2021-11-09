@@ -10,9 +10,11 @@ import {
   MeshPhongMaterial,
   CylinderGeometry,
   SphereGeometry,
+  Object3D,
 } from "three";
 
-export const useBottleInit = function (scene) {
+export const useBottleInit = function (state) {
+  const bottle = new Object3D()
   const head = new Mesh(
     new SphereGeometry(.04, 30, 30),
     new MeshPhongMaterial({
@@ -57,8 +59,10 @@ export const useBottleInit = function (scene) {
   foot.position.z = 0
   foot.castShadow = true
   
-  scene.add(head)
-  scene.add(neck)
-  scene.add(body)
-  scene.add(foot)
+  bottle.add(head)
+  bottle.add(neck)
+  bottle.add(body)
+  bottle.add(foot)
+  state.bottle = bottle
+  state.scene.add(bottle)
 }

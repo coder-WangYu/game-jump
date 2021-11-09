@@ -11,7 +11,7 @@ import {
   BoxGeometry
 } from "three";
 
-export const useBlockInit = function (scene) {
+export const useBlockInit = function (state) {
   const block = new Mesh(
     new BoxGeometry(.4 ,.2 ,.4),
     new MeshPhongMaterial({
@@ -24,5 +24,5 @@ export const useBlockInit = function (scene) {
   block.castShadow = true
   block.receiveShadow = true
   
-  scene.add(block)
+  state.scene.add(block)
 }

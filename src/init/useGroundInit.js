@@ -11,9 +11,9 @@ import {
   PlaneGeometry,
 } from "three";
 
-export const useGroundInit = function (scene, GAME_BOX) {
+export const useGroundInit = function (state) {
   const ground = new Mesh(
-    new PlaneGeometry(GAME_BOX.clientWidth, GAME_BOX.clientHeight),
+    new PlaneGeometry(state.GAME_BOX.clientWidth, state.GAME_BOX.clientHeight),
     new MeshPhongMaterial({
       color: 0xBFEDFF
     })
@@ -22,5 +22,5 @@ export const useGroundInit = function (scene, GAME_BOX) {
   ground.position.y = - 0.1
   ground.receiveShadow = true
   
-  scene.add(ground)
+  state.scene.add(ground)
 }

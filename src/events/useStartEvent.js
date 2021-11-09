@@ -5,7 +5,13 @@
  * @LastEditTime: 2021-11-08 13:33:32
  * @Description: 游戏开始事件
  */
+import {useElasticAnimate} from "../animate/useElasticAnimate";
+
 export const useStartEvent = function (status) {
+  // 瓶子从视口顶部下落
+  status.bottle.position.y = 1.5
+  useElasticAnimate(status.bottle)
+  
   // 创建积分信息
   const score_info = document.createElement("div")
   score_info.innerHTML = status.score

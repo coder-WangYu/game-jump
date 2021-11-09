@@ -12,13 +12,14 @@ import { usePauseEvent } from "./usePauseEvent";
 import { useMouseupEvent } from "./useMouseupEvent";
 import { useMousedownEvent } from "./useMousedownEvent";
 
-export const useEvents = function (scene, start_btn, GAME_BOX, GAME_PAGE) {
+export const useEvents = function (bottle, scene, start_btn, GAME_BOX, GAME_PAGE) {
   const status = reactive({
     GAME_BOX: GAME_BOX, // 游戏盒子
     GAME_PAGE: GAME_PAGE, // 游戏开始 / 继续页面
     start_btn: start_btn, // 游戏开始按钮
     pause_btn: null, // 游戏暂停按钮
     score_info: null, // 游戏积分控件
+    bottle: bottle, // 瓶子
     scene: scene, // THREE场景
     current_time: null, // 当前时间
     score: 0 // 游戏积分

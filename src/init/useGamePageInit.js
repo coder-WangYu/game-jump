@@ -12,9 +12,9 @@ import {
 } from "three";
 import {useEvents} from "../events/useEvents";
 
-export const useGamePageInit = function (scene, GAME_BOX) {
+export const useGamePageInit = function (state) {
   const GAME_PAGE = new Mesh(
-    new PlaneGeometry(GAME_BOX.clientWidth, GAME_BOX.clientHeight),
+    new PlaneGeometry(state.GAME_BOX.clientWidth, state.GAME_BOX.clientHeight),
     new MeshBasicMaterial({
       color: 0xD5D5D5,
       transparent: true,
@@ -39,18 +39,15 @@ export const useGamePageInit = function (scene, GAME_BOX) {
   start_btn.style.textAlign = "center"
   start_btn.style.lineHeight = "100px"
   start_btn.style.cursor = "pointer"
-  GAME_BOX.appendChild(start_btn)
+  state.GAME_BOX.appendChild(start_btn)
   
   start_btn.onclick = function () {
-    scene.remove(GAME_PAGE)
+    state.scene.remove(GAME_PAGE)
     start_btn.style.display = "none"
     
-    // 瓶子从视口顶部下落
-    
-    
     // 开启游戏事件监听
-    useEvents(scene, start_btn, GAME_BOX, GAME_PAGE)
+    useEvents(state.bottle, state.scene, start_btn, state.GAME_BOX, GAME_PAGE)
   }
   
-  scene.add(GAME_PAGE)
+  state.scene.add(GAME_PAGE)
 }

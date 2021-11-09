@@ -3,8 +3,8 @@
  * @CreateTime: 2021-11-08 15:20:36
  * @LastEditor: WYDX
  * @LastEditTime: 2021-11-08 15:20:36
- * @Description: 瓶子 / 砖块 由视口顶部下落动画
+ * @Description: 砖块由视口顶部下落动画
  */
-export const useFallAnimate = function () {
-  console.log("下落...")
+export const useFallAnimate = function (element) {
+
 }
