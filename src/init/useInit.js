@@ -40,12 +40,12 @@ export const useInit = function (GAME_BOX) {
     .1,
     1000
   )
-  // camera.position.x = 0
-  // camera.position.y = 0
+  camera.position.x = 0
+  camera.position.y = 0
+  camera.position.z = 4
+  // camera.position.x = -2
+  // camera.position.y = 2
   // camera.position.z = 2
-  camera.position.x = -2
-  camera.position.y = 2
-  camera.position.z = 2
   camera.lookAt(scene.position)
   
   // 设置渲染器

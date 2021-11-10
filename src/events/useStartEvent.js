@@ -5,12 +5,10 @@
  * @LastEditTime: 2021-11-08 13:33:32
  * @Description: 游戏开始事件
  */
-import {useElasticAnimate} from "../animate/useElasticAnimate";
-
 export const useStartEvent = function (status) {
   // 瓶子从视口顶部下落
   if (status.start_btn.innerHTML !== "继 续 游 戏") {
-    useElasticAnimate(2, status.bottle)
+
   }
   
   // 创建积分信息
