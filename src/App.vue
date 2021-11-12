@@ -10,15 +10,9 @@
 </template>
 
 <script setup>
-import { onMounted } from "vue"
-import { useInit } from "./init/useInit";
+import { init } from "./game/Init";
 
-onMounted(() => {
-  const GAME_BOX = document.getElementById("game-box")
-
-  // 初始化场景
-  useInit(GAME_BOX)
-})
+init()
 </script>
 
 <style>
