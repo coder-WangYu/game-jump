@@ -19,7 +19,7 @@ class Game {
     this.pageMask.style.height = "100%"
     this.pageMask.style.background = "rgba(0, 0, 0, .4)"
   }
-  initStartPage(wrapper) {
+  initStartPage(wrapper, cb) {
     this.createMask()
     
     // 创建游戏开始按钮
@@ -39,7 +39,14 @@ class Game {
     this.startBtn.innerHTML = "游 戏 开 始"
     
     // 绑定游戏开始事件
-    this.addEvents("startPage")
+    this.startBtn.addEventListener("click", () => {
+      this.pageMask.style.display = "none"
+      Bottle.fall()
+      
+      setTimeout(() => {
+        cb(true)
+      }, 700)
+    })
   
     // 添加遮罩层、开始按钮到页面中
     this.pageMask.appendChild(this.startBtn)
@@ -93,22 +100,6 @@ class Game {
     this.bgDOM.appendChild(this.scoreInfo)
     this.pageMask.appendChild(this.bgDOM)
     wrapper.appendChild(this.pageMask)
-  }
-  addEvents(type) {
-    if (type === "startPage") {
-      Events.click(this.startBtn, "start", (value) => {
-        if (value) {
-          this.pageMask.style.display = "none"
-          Bottle.fall()
-        }
-      })
-    } else if (type === "endPage") {
-      Events.click(this.restartBtn, "reset", (value) => {
-        if (value) {
-          console.log(value)
-        }
-      })
-    }
   }
 }
 

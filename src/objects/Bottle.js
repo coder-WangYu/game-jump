@@ -72,9 +72,8 @@ class Bottle {
     
     return this.bottle
   }
-  
-  // 游戏开始：瓶子从顶部降落
-  fall() {
+  // 瓶子从顶部降落
+  fall(cb) {
     // 将瓶子置于顶部
     this.bottle.position.y += 15
     
@@ -83,7 +82,35 @@ class Bottle {
       this.bottle.position,
       {x: -6, y: 1.3, z: 0},
       .7,
-      "BounceEaseOut"
+      "BounceEaseOut",
+      0,
+    )
+  }
+  // 瓶子蓄力
+  accumulate() {
+  }
+  // 瓶子跳跃
+  jump(duration) {
+    // 1.固定斜上抛夹角45°  =>  vx0 = vy0 = v0 * cos45°（水平&竖直方向初速度相同）
+    // 2.水平方向位移：v0 * cos45° * t
+    // 3.竖直上抛位移：v0 * cos45° * t - 1/2gt²
+    // 4.自由落体位移：1/2gt²
+    // y
+    //  |        ^
+    //  |      /   \
+    //  |     /     \
+    //  |    /       \
+    // x ---------------------
+    
+    // 计算终点
+    const coordinate = {}
+    
+    Animate.to(
+      this.bottle.position,
+      {x: 0, y: this.bottle.position.y, z: 0},
+      duration / 1000, // 单位：s
+      "Linear",
+      0
     )
   }
 }

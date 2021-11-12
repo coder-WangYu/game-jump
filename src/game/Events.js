@@ -18,6 +18,18 @@ class Events {
       }
     })
   }
+  // 鼠标按下事件：蓄力
+  mouseDown(element, cb) {
+    element.addEventListener("mousedown", () => {
+      cb(new Date())
+    })
+  }
+  // 鼠标抬起事件：蓄力结束（开始跳跃）
+  mouseUp(element, cb) {
+    element.addEventListener("mouseup", () => {
+      cb(new Date())
+    })
+  }
 }
 
 export default new Events()

@@ -18,8 +18,9 @@ class Animate {
   ) {
     for (const prop in from) {
       if (typeof from[prop] === "number" && typeof to[prop] === "number") {
-        this.tweenAnimate(from[prop], to[prop], duration, type, (delta) => {
+        this.tweenAnimate(from[prop], to[prop], duration, type, (delta, flag) => {
           from[prop] = delta
+          cb(flag)
         })
       }
     }
@@ -50,7 +51,7 @@ class Animate {
         cb(delta)
         requestAnimationFrame(animate)
       } else {
-        cb(to)
+        cb(to, true)
         return
       }
       

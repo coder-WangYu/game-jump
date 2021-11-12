@@ -70,6 +70,28 @@ export const init = function () {
     MyScene.addObject(status.defaultCylinder)
     
     // 添加游戏开始页面
-    status.startPage = Game.initStartPage(status.wrapper)
+    status.startPage = Game.initStartPage(status.wrapper, flag => {
+      if (flag) startJumpEvent()
+    })
+  }
+  
+  /**
+   * 添加跳跃事件监听
+   */
+  function startJumpEvent() {
+    let startTime, endTime, interval
+    
+    // 鼠标按下
+    document.addEventListener("mousedown", () => {
+      startTime = new Date()
+      Bottle.accumulate()
+    })
+    
+    // 鼠标抬起
+    document.addEventListener("mouseup", () => {
+      endTime = new Date()
+      interval = endTime - startTime
+      Bottle.jump(interval)
+    })
   }
 }
